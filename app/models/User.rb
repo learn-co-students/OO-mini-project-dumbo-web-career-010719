@@ -41,9 +41,12 @@ class User
     end
 
     def most_recent_recipe
-        top_three = RecipeCard.all.select do |card|
-            card.user == self
-        end.sort_by{|card| card.date}
-        top_three[-1].recipe
+        # sorts date if hash
+        if RecipeCard.all[0].date.class == Hash
+            RecipeCard.all.select{|card| card.user == self}.sort_by{|card|card.date[:D]}.sort_by{|card|card.date[:M]}.sort_by{|card|card.date[:Y]}[-1].recipe
+        else
+        #sorts date if integer
+        RecipeCard.all.select{|card| card.user == self}.sort_by{|card| card.date}[-1].recipe
+        end
     end
 end
