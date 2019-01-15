@@ -45,7 +45,7 @@ should return the recipe most recently added to the user's cookbook.
 
 
 
-### `RecipeCard`
+<!-- ### `RecipeCard`
 A RecipeCard is the join between a user instance and a recipe instance.  This is a has-many-through relationship.
 Build the following methods on the RecipeCard class:  
 
@@ -58,7 +58,7 @@ should return the rating (an integer) a user has given their entry
 - `RecipeCard#user`
 should return the user to which the entry belongs
 - `RecipeCard#recipe`
-should return the recipe to which the entry belongs
+should return the recipe to which the entry belongs -->
 
 ### `Ingredient`
 Build the following methods on the Ingredient class
@@ -69,7 +69,7 @@ should return all of the ingredient instances
 should return the ingredient instance that the highest number of users are allergic to
 
 
-### `RecipeIngredient`
+<!-- ### `RecipeIngredient`
 RecipeIngredient is the join between an ingredient and a recipe.  This is a has-many-through relationship
 Build the following methods on the RecipeIngredient class
 
@@ -78,13 +78,13 @@ should return all of the RecipeIngredient instances
 - `RecipeIngredient#ingredient`
 should return the ingredient instance
 - `RecipeIngredient#recipe`
-should return the recipe instance
+should return the recipe instance -->
 
-### `Allergen`
+<!-- ### `Allergen`
 An Allergen is a join between a user and an ingredient.  This is a has-many-through relationship.  What methods should an instance of this model respond to?
 
 - `Allergen.all`
-should return all of the Allergen instances
+should return all of the Allergen instances -->
 
 
 
