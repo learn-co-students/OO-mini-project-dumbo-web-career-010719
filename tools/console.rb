@@ -28,6 +28,8 @@ bobCard1 = bob.add_recipe_card(spaghetti, {:Y=>2015, :M=>9, :D=>12}, 10)
 bobCard2 = bob.add_recipe_card(pizza, {:Y=>2011, :M=>4, :D=>1}, 10)
 bobCard3 = bob.add_recipe_card(burger, {:Y=>2011, :M=>1, :D=>14}, 10)
 bobCard4 = bob.add_recipe_card("recipe4", {:Y=>2012, :M=>11, :D=>23}, 10)
+steveCard1 = steven.add_recipe_card(cookie, {:Y=>2011, :M=>4, :D=>1}, 10)
+steveCard2 = steven.add_recipe_card(burger, {:Y=>2011, :M=>1, :D=>14}, 10)
 
 
 

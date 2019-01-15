@@ -30,6 +30,12 @@ class User
         end.map {|allergy| allergy.ingredient}
     end
 
+    def my_recipes
+        RecipeCard.all.select do |card|
+            card.user == self
+        end.map {|card| card.recipe}   
+    end
+
     def top_three_recipes
        top_three = RecipeCard.all.select do |card|
             card.user == self
@@ -51,26 +57,21 @@ class User
     end
 
     def safe_recipes
-        unsafe_list = []
-        Allergen.all.each do |allergy|
-            if allergy.user == self
-                unsafe_list << allergy.ingredient
-            end
-        end
+        unsafe_list = self.allergens
 
-        result = []
+        unsafe_list2 = []
         RecipeIngredient.all.each do |rec_ing|
             unsafe_list.each do |ingredient|
                 if rec_ing.ingredient == ingredient
-                    result << rec_ing
+                    unsafe_list2 << rec_ing
                 end
             end
         end
 
-        answer = result.map do |recipe_ing|
+        unsafe = unsafe_list2.map do |recipe_ing|
             recipe_ing.recipe
         end
 
-        Recipe.all.reject {|x| answer.include? x}
+        my_recipes.reject {|x| unsafe.include? x}
     end
 end
