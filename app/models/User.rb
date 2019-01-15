@@ -49,4 +49,28 @@ class User
         RecipeCard.all.select{|card| card.user == self}.sort_by{|card| card.date}[-1].recipe
         end
     end
+
+    def safe_recipes
+        unsafe_list = []
+        Allergen.all.each do |allergy|
+            if allergy.user == self
+                unsafe_list << allergy.ingredient
+            end
+        end
+
+        result = []
+        RecipeIngredient.all.each do |rec_ing|
+            unsafe_list.each do |ingredient|
+                if rec_ing.ingredient == ingredient
+                    result << rec_ing
+                end
+            end
+        end
+
+        answer = result.map do |recipe_ing|
+            recipe_ing.recipe
+        end
+
+        Recipe.all.reject {|x| answer.include? x}
+    end
 end
