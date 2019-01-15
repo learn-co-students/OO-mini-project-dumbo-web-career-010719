@@ -1,6 +1,6 @@
 require "pry"
 class Recipe
-	attr_accessor :recipe_name, :user
+	attr_accessor :recipe_name
 
 	@@all = []
 
@@ -11,6 +11,15 @@ class Recipe
 
 	def self.all
 		@@all
+	end
+
+	# return the user instances who have recipe cards with this recipe
+	def users
+		RecipeCard.all.map do |recipe_card| 
+			if recipe_card.recipe == self 
+				recipe_card.user 
+			end
+		end.compact
 	end
 
 	# return the recipe instance with the highest number of users (the recipe that has the most recipe cards) !!
