@@ -23,14 +23,4 @@ class Ingredient
         hash.max_by {|k, v| v}[0]
     end
 
-    def self.most_popular
-        hash = Hash.new(0)
-
-        Allergen.all.each do |allergen|
-            hash[allergen.ingredient] += 1
-        end
-
-        hash.max_by {|k, v| v}[0]
-    end
-
 end
